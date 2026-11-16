@@ -2,35 +2,96 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SPM Smart Quiz</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f6ff;
-      text-align: center;
-      padding: 40px 15px;
-    }
-    h1 { color: #164b96; }
-    .box {
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      max-width: 500px;
-      margin: 30px auto;
-      box-shadow: 0 3px 12px #ddd;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPM Smart Quiz</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#eef4ff;font-family:Arial,sans-serif;color:#203047}
+header{background:#174b99;color:white;text-align:center;padding:30px 15px}
+header h1{margin:0;font-size:30px}
+header p{margin:12px 0 0}
+main{max-width:580px;margin:25px auto;padding:0 16px}
+.card{background:white;border-radius:18px;padding:24px;margin-bottom:18px;box-shadow:0 4px 15px #dce4f0}
+h2{color:#174b99;margin-top:0}
+label{display:block;margin:16px 0 7px;font-weight:bold}
+input,select{width:100%;padding:13px;border:1px solid #bcc9dc;border-radius:9px;font-size:16px}
+button{width:100%;background:#174b99;color:white;border:0;border-radius:10px;padding:15px;font-size:16px;font-weight:bold;margin-top:15px;cursor:pointer}
+.secondary{background:#e8effb;color:#174b99}
+.option{border:1px solid #d8e2f0;border-radius:12px;padding:16px;margin:12px 0}
+.option h3{margin:0 0 8px}
+.option p{color:#586579}
+.hidden{display:none}
+small{color:#667085}
+footer{text-align:center;padding:20px;color:#667085}
+</style>
 </head>
 <body>
-  <div class="box">
-    <h1>SPM Smart Quiz</h1>
-    <h2>Selamat Datang!</h2>
-    <p>Platform latihan SPM percuma untuk semua pelajar.</p>
-    <p>Belajar, berlatih dan tingkatkan pencapaian anda.</p>
-    <h3>Sejarah Tingkatan 4</h3>
-    <p>Latihan kuiz akan tersedia tidak lama lagi.</p>
-  </div>
+<header>
+<h1>SPM Smart Quiz</h1>
+<p>Belajar • Berlatih • Berjaya</p>
+</header>
+<main>
+<section id="welcome" class="card">
+<h2>Selamat Datang!</h2>
+<p>Platform latihan SPM percuma untuk semua pelajar Malaysia.</p>
+<p>Maklumat berikut adalah pilihan sahaja. Tidak perlu mendaftar akaun.</p>
+<label for="nama">Nama panggilan (pilihan)</label>
+<input id="nama" maxlength="30" placeholder="Contoh: Ain">
+<label for="sekolah">Nama sekolah (pilihan)</label>
+<input id="sekolah" maxlength="100" placeholder="Contoh: SMK Bukit Sentosa 2">
+<label for="tingkatan">Pilih tingkatan</label>
+<select id="tingkatan">
+<option value="4">Tingkatan 4</option>
+<option value="5">Tingkatan 5</option>
+</select>
+<button onclick="mula()">Mulakan Latihan</button>
+<button class="secondary" onclick="langkau()">Langkau & Teruskan</button>
+<p><small>Maklumat yang diisi tidak dihantar atau disimpan dalam pangkalan data. Nama panggilan hanya digunakan dalam paparan sesi ini.</small></p>
+</section>
+<section id="menu" class="card hidden">
+<h2 id="salam">Pilih Mata Pelajaran</h2>
+<p id="pilihan"></p>
+<div class="option">
+<h3>📚 Sejarah Tingkatan 4</h3>
+<p>Latihan objektif dan Kertas 2.</p>
+<button onclick="sejarah()">Lihat Latihan Sejarah</button>
+</div>
+<div class="option">
+<h3>📖 Mata Pelajaran Lain</h3>
+<p>Akan ditambah secara berperingkat.</p>
+</div>
+<button class="secondary" onclick="kembali()">Kembali</button>
+</section>
+<section id="latihan" class="card hidden">
+<h2>Sejarah Tingkatan 4</h2>
+<div class="option"><h3>Objektif – Set A</h3><p>Dalam penyediaan.</p></div>
+<div class="option"><h3>Objektif – Set B</h3><p>Dalam penyediaan.</p></div>
+<div class="option"><h3>Kertas 2 – Set A</h3><p>Dalam penyediaan.</p></div>
+<div class="option"><h3>Kertas 2 – Set B</h3><p>Dalam penyediaan.</p></div>
+<button class="secondary" onclick="papar('menu')">Kembali ke Menu</button>
+</section>
+</main>
+<footer>SPM Smart Quiz • Pendidikan Percuma Untuk Semua</footer>
+<script>
+function papar(id){
+document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));
+document.getElementById(id).classList.remove("hidden");
+}
+function mula(){
+let nama=document.getElementById("nama").value.trim();
+let tingkatan=document.getElementById("tingkatan").value;
+document.getElementById("salam").textContent=nama?"Selamat datang, "+nama+"!":"Pilih Mata Pelajaran";
+document.getElementById("pilihan").textContent="Tingkatan "+tingkatan;
+papar("menu");
+}
+function langkau(){
+document.getElementById("nama").value="";
+document.getElementById("sekolah").value="";
+mula();
+}
+function sejarah(){papar("latihan")}
+function kembali(){papar("welcome")}
+</script>
 </body>
 </html>
