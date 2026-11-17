@@ -67,7 +67,7 @@ function masukSejarah4(){
 function masukKimia4(){
  if(window.rekodModul)window.rekodModul('kimia_t4');
  try {sessionStorage.setItem('spmsmartquiz_nama',document.getElementById('nama').value.trim());sessionStorage.setItem('spmsmartquiz_sekolah',document.getElementById('sekolah').value.trim());}catch(e){}
- window.location.href='kimia_tingkatan4_set_a.html';
+ window.location.href='Kimia_Tingkatan_4_Set_A_BAHARU.html';
 }
 function shuffle(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
 function start(){if(window.rekodLatihan)window.rekodLatihan("t4_objektif_a");attempt++;items=shuffle(bank.map(q=>({...q,choices:shuffle(q.options.map((t,k)=>({text:t,correct:k===q.correct})))})));idx=0;answers=[];papar('quizPage');render()}
