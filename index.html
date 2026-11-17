@@ -23,13 +23,17 @@ button:disabled{opacity:.45;cursor:not-allowed}.wide{width:100%}.secondary{backg
 <div class="gold-rule" aria-hidden="true"></div>
 <h2 style="text-align:center">Pilih Modul Latihan</h2>
 <div class="module-grid">
-<div class="module"><span class="symbol">📘</span><h3>Tingkatan 4</h3><p>Sejarah • 10 Bab</p><button onclick="pilihModul('4')">Masuk Modul</button></div>
+<div class="module"><span class="symbol">📘</span><h3>Tingkatan 4</h3><p>Pilih subjek latihan</p><button onclick="pilihModul('4')">Masuk Modul</button></div>
 <div class="module"><span class="symbol">📗</span><h3>Tingkatan 5</h3><p>Sejarah • 10 Bab</p><button onclick="pilihModul('5')">Masuk Modul</button></div>
 <div class="module"><span class="symbol">🎓</span><h3>SPM Bersepadu</h3><p>Gabungan Tingkatan 4 + 5</p><button onclick="pilihModul('spm')">Masuk Modul</button></div>
 </div><small>Latihan percuma untuk semua. Tiada pendaftaran diperlukan.</small></section>
+<section id="subjek4" class="card hidden"><h2>Pilih Subjek Tingkatan 4</h2><p>Pilih subjek untuk meneruskan latihan.</p>
+<div class="option"><h3>📘 Sejarah Tingkatan 4</h3><p>10 Bab • Kertas 1 dan Kertas 2</p><button class="wide" onclick="masukSejarah4()">Masuk Modul Sejarah</button></div>
+<div class="option"><h3>🧪 Kimia Tingkatan 4</h3><p>8 Bab • Kertas 1 • 40 soalan</p><button class="wide" onclick="masukKimia4()">Masuk Modul Kimia</button></div>
+<button class="secondary wide" onclick="papar('welcome')">Kembali ke Halaman Utama</button></section>
 <section id="menu" class="card hidden"><h2 id="salam">Sejarah Tingkatan 4</h2><p>Latihan untuk mengukuhkan ingatan dan pemahaman.</p>
 <div class="option"><h3>📚 Sejarah Tingkatan 4</h3><p>Latihan objektif dan Kertas 2.</p><button class="wide" onclick="papar('latihan')">Lihat Latihan Sejarah</button></div>
-<button class="secondary wide" onclick="papar('welcome')">Kembali ke Halaman Utama</button></section>
+<button class="secondary wide" onclick="papar('subjek4')">Kembali ke Pilihan Subjek</button></section>
 
 <section id="latihan" class="card hidden"><h2>Sejarah Tingkatan 4</h2><p>Pilih jenis latihan dahulu.</p>
 <div class="option"><h3>📝 Objektif — Kertas 1</h3><p>40 soalan setiap set • Bab 1–10 • Soalan dan jawapan diacak</p><button class="wide" onclick="papar('objektifMenu')">Pilih Set Objektif</button></div>
@@ -53,9 +57,17 @@ function pilihModul(modul){
   if(window.rekodModul)window.rekodModul(modul);
   if(modul==='5'){window.location.href='tingkatan5.html';return}
   if(modul==='spm'){window.location.href='spm_bersepadu.html';return}
-  const n=document.getElementById('nama').value.trim();
-  document.getElementById('salam').textContent=n?'Selamat datang, '+n+'!':'Sejarah Tingkatan 4';
-  papar('menu');
+  papar('subjek4');
+}
+function masukSejarah4(){
+ const n=document.getElementById('nama').value.trim();
+ document.getElementById('salam').textContent=n?'Selamat datang, '+n+'!':'Sejarah Tingkatan 4';
+ papar('menu');
+}
+function masukKimia4(){
+ if(window.rekodModul)window.rekodModul('kimia_t4');
+ try {sessionStorage.setItem('spmsmartquiz_nama',document.getElementById('nama').value.trim());sessionStorage.setItem('spmsmartquiz_sekolah',document.getElementById('sekolah').value.trim());}catch(e){}
+ window.location.href='kimia_tingkatan4_set_a.html';
 }
 function shuffle(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
 function start(){if(window.rekodLatihan)window.rekodLatihan("t4_objektif_a");attempt++;items=shuffle(bank.map(q=>({...q,choices:shuffle(q.options.map((t,k)=>({text:t,correct:k===q.correct})))})));idx=0;answers=[];papar('quizPage');render()}
