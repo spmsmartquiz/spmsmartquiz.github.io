@@ -30,7 +30,7 @@ button:disabled{opacity:.45;cursor:not-allowed}.wide{width:100%}.secondary{backg
 <section id="menu" class="card hidden"><h2 id="salam">Sejarah Tingkatan 4</h2><p>Latihan untuk mengukuhkan ingatan dan pemahaman.</p>
 <div class="option"><h3>📚 Sejarah Tingkatan 4</h3><p>Latihan objektif dan Kertas 2.</p><button class="wide" onclick="papar('latihan')">Lihat Latihan Sejarah</button></div>
 <button class="secondary wide" onclick="papar('welcome')">Kembali ke Halaman Utama</button></section>
-<section id="spmMenu" class="card hidden"><h2>🎓 SPM Bersepadu</h2><p>Latihan 40 soalan objektif gabungan Tingkatan 4 dan Tingkatan 5 sedang disediakan.</p><p>Modul ini belum dibuka supaya pelajar tidak tersalah masuk ke latihan yang belum lengkap.</p><button class="secondary wide" onclick="papar('welcome')">Kembali ke Halaman Utama</button></section>
+
 <section id="latihan" class="card hidden"><h2>Sejarah Tingkatan 4</h2><p>Pilih jenis latihan dahulu.</p>
 <div class="option"><h3>📝 Objektif — Kertas 1</h3><p>40 soalan setiap set • Bab 1–10 • Soalan dan jawapan diacak</p><button class="wide" onclick="papar('objektifMenu')">Pilih Set Objektif</button></div>
 <div class="option"><h3>📚 Subjektif — Kertas 2</h3><p>Latihan isi tempat kosong • Bahagian A dan B</p><button class="wide" onclick="papar('subjektifMenu')">Pilih Set Kertas 2</button></div>
@@ -52,7 +52,7 @@ function papar(id){document.querySelectorAll('main section').forEach(s=>s.classL
 function pilihModul(modul){
   if(window.rekodModul)window.rekodModul(modul);
   if(modul==='5'){window.location.href='tingkatan5.html';return}
-  if(modul==='spm'){papar('spmMenu');return}
+  if(modul==='spm'){window.location.href='spm_bersepadu.html';return}
   const n=document.getElementById('nama').value.trim();
   document.getElementById('salam').textContent=n?'Selamat datang, '+n+'!':'Sejarah Tingkatan 4';
   papar('menu');
