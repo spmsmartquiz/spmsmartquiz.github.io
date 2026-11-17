@@ -29,8 +29,19 @@ button:disabled{opacity:.45;cursor:not-allowed}.wide{width:100%}.secondary{backg
 </div><small>Latihan percuma untuk semua. Tiada pendaftaran diperlukan.</small></section>
 <section id="subjek4" class="card hidden"><h2>Pilih Subjek Tingkatan 4</h2><p>Pilih subjek untuk meneruskan latihan.</p>
 <div class="option"><h3>📘 Sejarah Tingkatan 4</h3><p>10 Bab • Kertas 1 dan Kertas 2</p><button class="wide" onclick="masukSejarah4()">Masuk Modul Sejarah</button></div>
-<div class="option"><h3>🧪 Kimia Tingkatan 4</h3><p>8 Bab • Kertas 1 • 40 soalan</p><button class="wide" onclick="masukKimia4()">Masuk Modul Kimia</button></div>
+<div class="option"><h3>🧪 Kimia Tingkatan 4</h3><p>8 Bab • Kertas 1 • 3 set × 40 soalan</p><button class="wide" onclick="papar('kimiaMenu')">Pilih Set Kimia</button></div>
+<div class="option"><h3>☪️ Pendidikan Islam Tingkatan 4</h3><p>KSSM • 3 set × 40 soalan • 100 markah setiap set</p><button class="wide" onclick="papar('islamMenu')">Pilih Set Pendidikan Islam</button></div>
 <button class="secondary wide" onclick="papar('welcome')">Kembali ke Halaman Utama</button></section>
+<section id="kimiaMenu" class="card hidden"><h2>🧪 Kimia Tingkatan 4</h2><p>Kertas 1 • 40 soalan setiap set • Tiada had masa</p>
+<div class="option"><h3>Set A</h3><button class="wide" onclick="bukaLatihan('Kimia_Tingkatan_4_Set_A_BAHARU.html')">Mula Set A</button></div>
+<div class="option"><h3>Set B</h3><button class="wide" onclick="bukaLatihan('Kimia_Tingkatan_4_Set_B.html')">Mula Set B</button></div>
+<div class="option"><h3>Set C</h3><button class="wide" onclick="bukaLatihan('Kimia_Tingkatan_4_Set_C.html')">Mula Set C</button></div>
+<button class="secondary wide" onclick="papar('subjek4')">Kembali ke Pilihan Subjek</button></section>
+<section id="islamMenu" class="card hidden"><h2>☪️ Pendidikan Islam Tingkatan 4</h2><p>40 soalan setiap set • 100 markah • Tiada had masa</p>
+<div class="option"><h3>Set A</h3><button class="wide" onclick="bukaLatihan('Pendidikan_Islam_Tingkatan_4_Set_A.html')">Mula Set A</button></div>
+<div class="option"><h3>Set B</h3><button class="wide" onclick="bukaLatihan('Pendidikan_Islam_Tingkatan_4_Set_B.html')">Mula Set B</button></div>
+<div class="option"><h3>Set C</h3><button class="wide" onclick="bukaLatihan('Pendidikan_Islam_Tingkatan_4_Set_C.html')">Mula Set C</button></div>
+<button class="secondary wide" onclick="papar('subjek4')">Kembali ke Pilihan Subjek</button></section>
 <section id="menu" class="card hidden"><h2 id="salam">Sejarah Tingkatan 4</h2><p>Latihan untuk mengukuhkan ingatan dan pemahaman.</p>
 <div class="option"><h3>📚 Sejarah Tingkatan 4</h3><p>Latihan objektif dan Kertas 2.</p><button class="wide" onclick="papar('latihan')">Lihat Latihan Sejarah</button></div>
 <button class="secondary wide" onclick="papar('subjek4')">Kembali ke Pilihan Subjek</button></section>
@@ -63,6 +74,10 @@ function masukSejarah4(){
  const n=document.getElementById('nama').value.trim();
  document.getElementById('salam').textContent=n?'Selamat datang, '+n+'!':'Sejarah Tingkatan 4';
  papar('menu');
+}
+function bukaLatihan(fail){
+ try{sessionStorage.setItem('spmsmartquiz_nama',document.getElementById('nama').value.trim());sessionStorage.setItem('spmsmartquiz_sekolah',document.getElementById('sekolah').value.trim())}catch(e){}
+ window.location.href=fail;
 }
 function masukKimia4(){
  if(window.rekodModul)window.rekodModul('kimia_t4');
