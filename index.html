@@ -93,9 +93,10 @@ button:disabled{opacity:.45;cursor:not-allowed}.wide{width:100%}.secondary{backg
 <section id="latihan" class="card hidden"><h2>Sejarah Tingkatan 4</h2><p>Pilih jenis latihan dahulu.</p>
 <div class="option"><h3>📝 Objektif — Kertas 1</h3><p>40 soalan setiap set • Bab 1–10 • Soalan dan jawapan diacak</p><button class="wide" onclick="papar('objektifMenu')">Pilih Set Objektif</button></div>
 <div class="option"><h3>📚 Subjektif — Kertas 2</h3><p>Latihan isi tempat kosong • Bahagian A dan B</p><button class="wide" onclick="papar('subjektifMenu')">Pilih Set Kertas 2</button></div>
-<button class="secondary wide" onclick="papar('menu')">Kembali ke Menu</button></section>
+<button class="secondary wide" onclick="papar('subjek4')">Kembali ke Pilihan Subjek</button></section>
 <section id="objektifMenu" class="card hidden"><h2>Objektif — Kertas 1</h2><p>Pilih siri latihan.</p>
 <div class="option"><h3>Set A</h3><p>40 soalan • Bab 1–10 • Soalan dan jawapan diacak</p><button class="wide" onclick="start()">Mula Set A</button></div>
+<div class="option"><h3>Set B — Pengukuhan Fakta</h3><p>40 soalan • Bab 1–10 • Tokoh, tarikh, peristiwa dan pertubuhan</p><button class="wide" onclick="bukaLatihan('Sejarah_Tingkatan_4_Set_B.html')">Mula Set B</button></div>
 <div class="option"><h3>Set C — Fakta Khusus</h3><p>40 soalan • Bab 1–10 • Tokoh, tarikh, peristiwa, dasar dan perjanjian</p><button class="wide" onclick="bukaLatihan('Sejarah_Tingkatan_4_Set_C.html')">Mula Set C</button></div>
 <div class="option"><h3>Set D — Fakta Mendalam</h3><p>40 soalan • Bab 1–10 • Kronologi, sebab-akibat dan sedikit KBAT</p><button class="wide" onclick="bukaLatihan('Sejarah_Tingkatan_4_Set_D.html')">Mula Set D</button></div>
 <button class="secondary wide" onclick="papar('latihan')">Kembali</button></section>
@@ -119,7 +120,7 @@ function pilihModul(modul){
 function masukSejarah4(){
  const n=document.getElementById('nama').value.trim();
  document.getElementById('salam').textContent=n?'Selamat datang, '+n+'!':'Sejarah Tingkatan 4';
- papar('menu');
+ papar('latihan');
 }
 function bukaLatihan(fail){
  try{sessionStorage.setItem('spmsmartquiz_nama',document.getElementById('nama').value.trim());sessionStorage.setItem('spmsmartquiz_sekolah',document.getElementById('sekolah').value.trim())}catch(e){}
