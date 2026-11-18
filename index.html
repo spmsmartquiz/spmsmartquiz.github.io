@@ -32,12 +32,28 @@ button:disabled{opacity:.45;cursor:not-allowed}.wide{width:100%}.secondary{backg
 <div class="option"><h3>🧪 Kimia Tingkatan 4</h3><p>8 Bab • Kertas 1 • 3 set × 40 soalan</p><button class="wide" onclick="papar('kimiaMenu')">Pilih Set Kimia</button></div>
 <div class="option"><h3>💻 Sains Komputer Tingkatan 4</h3><p>3 Bab • 3 set × 40 soalan • 100 markah setiap set</p><button class="wide" onclick="papar('sainsKomputerMenu')">Pilih Set Sains Komputer</button></div>
 <div class="option"><h3>☪️ Pendidikan Islam Tingkatan 4</h3><p>KSSM • 3 set × 40 soalan • 100 markah setiap set</p><button class="wide" onclick="papar('islamMenu')">Pilih Set Pendidikan Islam</button></div>
+<div class="option"><h3>📐 Matematik Tingkatan 4</h3><p>10 Bab • Kertas 1 • 4 set × 40 soalan objektif • 1 markah setiap soalan</p><button class="wide" onclick="papar('matematik4Menu')">Masuk Modul Matematik</button></div>
+
+
 <button class="secondary wide" onclick="papar('welcome')">Kembali ke Halaman Utama</button></section>
 <section id="subjek5" class="card hidden"><h2>Pilih Subjek Tingkatan 5</h2><p>Pilih subjek untuk meneruskan latihan.</p>
 <div class="option"><h3>📗 Sejarah Tingkatan 5</h3><p>Modul Sejarah Tingkatan 5 sedia ada</p><button class="wide" onclick="window.location.href='tingkatan5.html'">Masuk Modul Sejarah</button></div>
 <div class="option"><h3>☪️ Pendidikan Islam Tingkatan 5</h3><p>KSSM • 4 set × 40 soalan • 100 markah setiap set</p><button class="wide" onclick="papar('islam5Menu')">Pilih Set Pendidikan Islam</button></div>
 <div class="option"><h3>💻 Sains Komputer Tingkatan 5</h3><p>3 Bab • 5 set × 40 soalan • 100 markah setiap set</p><button class="wide" onclick="papar('sains5Menu')">Pilih Set Sains Komputer</button></div>
 <button class="secondary wide" onclick="papar('welcome')">Kembali ke Halaman Utama</button></section>
+<section id="matematik4Menu" class="card hidden"><h2>📐 Matematik Tingkatan 4</h2><p>Pilih kertas peperiksaan. Kertas 1 merangkumi semua 10 bab Tingkatan 4.</p>
+<div class="option"><h3>📝 Kertas 1 — Objektif</h3><p>40 soalan • 40 markah • Tiada had masa • Semakan dan jalan pengiraan selepas latihan</p><button class="wide" onclick="papar('matematik4Kertas1')">Pilih Set Kertas 1</button></div>
+<div class="option"><h3>📚 Kertas 2 — Subjektif</h3><p>Bahagian A, Bahagian B dan Bahagian C • Belum dibangunkan</p><button class="wide secondary" onclick="papar('matematik4Kertas2')">Lihat Struktur Kertas 2</button></div>
+<button class="secondary wide" onclick="papar('subjek4')">Kembali ke Pilihan Subjek</button></section>
+<section id="matematik4Kertas1" class="card hidden"><h2>📝 Matematik Tingkatan 4 — Kertas 1</h2><p>Objektif • 40 soalan setiap set • 1 markah setiap soalan • 40 markah keseluruhan</p>
+<div class="option"><h3>Set A</h3><p>40 soalan • 10 bab • Tahap sederhana</p><button class="wide" onclick="bukaLatihan('Matematik_Tingkatan_4_Kertas_1_Set_A.html')">Mula Set A</button></div>
+<div class="option"><h3>Set B</h3><p>40 soalan • 10 bab • Tahap sederhana</p><button class="wide" onclick="bukaLatihan('Matematik_Tingkatan_4_Kertas_1_Set_B.html')">Mula Set B</button></div>
+<div class="option"><h3>Set C</h3><p>40 soalan • 10 bab • Tahap sederhana</p><button class="wide" onclick="bukaLatihan('Matematik_Tingkatan_4_Kertas_1_Set_C.html')">Mula Set C</button></div>
+<div class="option"><h3>Set D</h3><p>40 soalan • 10 bab • Tahap sederhana</p><button class="wide" onclick="bukaLatihan('Matematik_Tingkatan_4_Kertas_1_Set_D.html')">Mula Set D</button></div>
+<button class="secondary wide" onclick="papar('matematik4Menu')">Kembali ke Pilihan Kertas</button></section>
+<section id="matematik4Kertas2" class="card hidden"><h2>📚 Matematik Tingkatan 4 — Kertas 2</h2><p>Bahagian A, B dan C akan disediakan kemudian. Tiada soalan Kertas 2 dimasukkan dalam versi ini.</p>
+<div class="option"><h3>Bahagian A</h3><p>Belum tersedia</p></div><div class="option"><h3>Bahagian B</h3><p>Belum tersedia</p></div><div class="option"><h3>Bahagian C</h3><p>Belum tersedia</p></div>
+<button class="secondary wide" onclick="papar('matematik4Menu')">Kembali ke Pilihan Kertas</button></section>
 <section id="islam5Menu" class="card hidden"><h2>☪️ Pendidikan Islam Tingkatan 5</h2><p>40 soalan setiap set • 100 markah • Tiada had masa</p>
 <div class="option"><h3>Set A</h3><button class="wide" onclick="bukaLatihan('Pendidikan_Islam_Tingkatan_5_Set_A.html')">Mula Set A</button></div>
 <div class="option"><h3>Set B</h3><button class="wide" onclick="bukaLatihan('Pendidikan_Islam_Tingkatan_5_Set_B.html')">Mula Set B</button></div>
@@ -112,4 +128,8 @@ function shuffle(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(
 function start(){if(window.rekodLatihan)window.rekodLatihan("t4_objektif_a");attempt++;items=shuffle(bank.map(q=>({...q,choices:shuffle(q.options.map((t,k)=>({text:t,correct:k===q.correct})))})));idx=0;answers=[];papar('quizPage');render()}
 function render(){let el=document.getElementById('quiz');if(idx>=items.length){let score=answers.filter((a,i)=>items[i].choices[a]?.correct).length;let reveal=attempt>=2;el.innerHTML=`<h2>Markah: ${score}/40 (${(score/40*100).toFixed(1)}%)</h2><p>${reveal?'Semakan jawapan yang salah:':'Cubaan pertama: markah sahaja dipaparkan. Cuba lagi untuk semak jawapan.'}</p><div id="feedback"></div><button class="wide" onclick="start()">Cuba lagi (acak semula)</button>`;if(reveal){let box=document.getElementById('feedback');items.forEach((q,i)=>{if(q.choices[answers[i]]?.correct)return;let d=document.createElement('div');d.className='wrong';let b=document.createElement('b');b.textContent=`Soalan ${i+1} (Bab ${q.chapter}): `;d.append(b,document.createTextNode(q.question));d.append(document.createElement('br'),document.createTextNode('Jawapan anda: '+(q.choices[answers[i]]?.text||'Tidak dijawab')));d.append(document.createElement('br'));let c=document.createElement('b');c.textContent='Jawapan betul: '+q.choices.find(x=>x.correct).text;d.append(c);box.append(d)});if(!box.children.length)box.textContent='Tahniah! Semua jawapan betul.'}return}let q=items[idx];el.replaceChildren();let small=document.createElement('small');small.textContent=`Cubaan ${attempt} • Soalan ${idx+1}/40 • Bab ${q.chapter}`;let h=document.createElement('h3');h.textContent=q.question;el.append(small,h);q.choices.forEach((o,i)=>{let l=document.createElement('label');l.className='choice';let inp=document.createElement('input');inp.type='radio';inp.name='ans';inp.value=i;inp.onchange=()=>document.getElementById('next').disabled=false;l.append(inp,document.createTextNode(' '+ 'ABCD'[i]+'. '+o.text));el.append(l)});let btn=document.createElement('button');btn.id='next';btn.className='wide';btn.disabled=true;btn.textContent=idx===39?'Lihat keputusan':'Seterusnya';btn.onclick=()=>{answers.push(Number(document.querySelector('input[name=ans]:checked').value));idx++;render();window.scrollTo(0,0)};el.append(btn)}
 function bukaKertas2(set){if(window.rekodLatihan)window.rekodLatihan('t4_kertas2_'+set);window.location.href='kertas2_updated.html?set='+encodeURIComponent(set)}
+
+
+
+window.addEventListener('load',()=>{if(location.hash==='#matematik4')papar('matematik4Kertas1')});
 </script></body></html>
